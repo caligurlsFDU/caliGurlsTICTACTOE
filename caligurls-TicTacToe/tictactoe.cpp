@@ -32,6 +32,12 @@ int main()
 	cout << "4: Display sample board\n";
 
 	cin >> userChoice;
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(10000, '\n');
+		goto failed;
+	}
 
 	switch (userChoice) //switch statement with all 4 (three but the fourth is temporary) options. Option 3 exits the loop with a goodbye message.
 	{
@@ -47,7 +53,7 @@ int main()
 	case 2:
 		cout << "\nInstructions:\n";
 		cout << "Get three of your symbol (X) in a row while blocking your opponent to win! Input your moves by selecting the cooresponding grid space\n";
-		cout << "1 2 3\n 4 5 6\n 7 8 9";
+		cout << "1 2 3\n4 5 6\n7 8 9\n";
 		break;
 
 	case 3:
@@ -60,6 +66,8 @@ int main()
 		printBoard(ticTacToe);
 		break;
 
+
+	failed:
 	default:
 		cout << "\nInvalid input. Returning to menu\n";
 		break;
