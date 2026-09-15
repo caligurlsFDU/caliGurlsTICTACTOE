@@ -46,8 +46,8 @@ int main()
 
 	case 2:
 		cout << "\nInstructions:\n";
-		cout << "Get three of your symbol (X) in a row while blocking your opponent to win! Input your moves by selecting the cooresponding grid space\n";
-		cout << "1 2 3\n 4 5 6\n 7 8 9";
+		cout << "Get three of your symbol (X) in a horizontal, vertical, or diagonal row while blocking your opponent to win! Input your moves by selecting the corresponding grid space\n";
+		cout << " 1 2 3\n 4 5 6\n 7 8 9" << endl;
 		break;
 
 	case 3:
