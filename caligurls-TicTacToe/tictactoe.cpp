@@ -155,7 +155,7 @@ void playerChange(int boardState[])
 
 		if (boardState[choice] != 0)
 		{
-			cout << "invalid move. space is occupied. select again.";
+			cout << "invalid move, or space is occupied. select again.";
 		}
 		else
 		{
