@@ -49,25 +49,25 @@ int main()
 		cout << "\nPlay selected.";
 		while (gameRunning)
 		{
-			cout << "Player turn\n";
+			cout << "Player (X)'s turn\n";
 			cout << "\n\n";
 			playerChange(ticTacToe);
 			playerWins = checkWin(ticTacToe);
 			printBoard(ticTacToe);
 			if (playerWins)
 			{
-				cout << "\n\n\nPlayer wins!\n\n\n";
+				cout << "\n\n\nPlayer (X) wins!\n\n\n";
 				gameRunning = false;
 				break;
 			}
 			cout << "\n\n";
-			cout << "CPU turn\n";
+			cout << "CPU (O's) turn\n";
 			computerChange(ticTacToe);
 			CPUWins = checkWin(ticTacToe);
 			printBoard(ticTacToe);
 			if (CPUWins)
 			{
-				cout << "\n\n\nCPU wins!\n\n\n";
+				cout << "\n\n\nCPU (O) wins!\n\n\n";
 				gameRunning = false;
 				break;
 			}
@@ -172,6 +172,7 @@ void computerChange(int boardState[])
 	
 	while (CPUChose == false)
 	{
+		choice--;
 		if (boardState[choice] != 0)
 		{
 			choice = (rand() % 9 + 1);
