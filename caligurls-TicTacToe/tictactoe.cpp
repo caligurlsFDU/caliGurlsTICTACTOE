@@ -19,91 +19,103 @@ void computerChange(int boardState[]);
 int main()
 {
 	srand(time(NULL));
+	int turnCount = 0;
 	int randomNumber = (rand() % 9 + 1); //not implemented yet but generates a random number between 1 and 9 for the cpu to pick
 	int ticTacToe[9] = { 0,0,0,0,0,0,0,0,0 }; //edit this before selecting option 4 in the menu to test different board layouts.
-	bool gameRunning = true; 
+	bool gameRunning = true;
 	bool playerChose = false; //both of these are misc bools used to control loops
 	bool playerWins = false;
 	bool CPUWins = false;
 
-	while(returnToMainMenu)
+	while (returnToMainMenu)
 	{
-	cout << "Welcome to Tic Tac Toe. Please select an option with the cooresponding num key\n";
-	cout << "1: Play\n";
-	cout << "2: Instructions\n";
-	cout << "3: Exit\n";
-	cout << "4: Display sample board\n";
+		cout << "Welcome to Tic Tac Toe. Please select an option with the cooresponding num key\n";
+		cout << "1: Play\n";
+		cout << "2: Instructions\n";
+		cout << "3: Exit\n";
+		cout << "4: Display sample board\n";
 
-	cin >> userChoice;
-	if (cin.fail())
-	{
-		cin.clear();
-		cin.ignore(10000, '\n');
-		goto failed;
-	}
-
-	switch (userChoice) //switch statement with all 4 (three but the fourth is temporary) options. Option 3 exits the loop with a goodbye message.
-	{
-	case 1:
-		gameRunning = true;
-		cout << "\nPlay selected.";
-		while (gameRunning)
+		cin >> userChoice;
+		if (cin.fail())
 		{
-			cout << "Player (X)'s turn\n";
-			cout << "\n\n";
-			playerChange(ticTacToe);
-			playerWins = checkWin(ticTacToe);
-			printBoard(ticTacToe);
-			if (playerWins)
+			cin.clear();
+			cin.ignore(10000, '\n');
+			goto failed;
+		}
+
+		switch (userChoice) //switch statement with all 4 (three but the fourth is temporary) options. Option 3 exits the loop with a goodbye message.
+		{
+		case 1:
+			turnCount = 0;
+			gameRunning = true;
+			cout << "\nPlay selected.";
+			while (gameRunning)
 			{
-				cout << "\n\n\nPlayer (X) wins!\n\n\n";
-				gameRunning = false;
-				break;
-			}
-			cout << "\n\n";
-			cout << "CPU (O's) turn\n";
-			computerChange(ticTacToe);
-			CPUWins = checkWin(ticTacToe);
-			printBoard(ticTacToe);
-			if (CPUWins)
-			{
-				cout << "\n\n\nCPU (O) wins!\n\n\n";
-				gameRunning = false;
-				break;
-			}
+				cout << "Player (X)'s turn\n";
+				cout << "\n\n";
+				playerChange(ticTacToe);
+				playerWins = checkWin(ticTacToe);
+				printBoard(ticTacToe);
+				if (playerWins)
+				{
+					cout << "\n\n\nPlayer (X) wins!\n\n\n";
+					gameRunning = false;
+					break;
+				}
+				turnCount++;
+
+				if (turnCount == 9)
+				{
+					cout << "\n\n\nTie Game. Reached Turn 9 with a full board";
+					gameRunning = false;
+					break;
+				}
+
+				cout << "\n\n";
+				cout << "CPU (O's) turn\n";
+				computerChange(ticTacToe);
+				CPUWins = checkWin(ticTacToe);
+				printBoard(ticTacToe);
+				if (CPUWins)
+				{
+					cout << "\n\n\nCPU (O) wins!\n\n\n";
+					gameRunning = false;
+					break;
+				}
+				turnCount++;
 
 			}
-		
-		for (int i = 0; i < 9; i++)
+
+			for (int i = 0; i < 9; i++)
 			{
 				ticTacToe[i] = 0;
 			}
-		//wipe the tic tac toe board so user can play again
+			//wipe the tic tac toe board so user can play again
 
-		break;
+			break;
 
-	case 2:
-		cout << "\nInstructions:\n";
-		cout << "Get three of your symbol (X) in a horizontal, vertical, or diagonal row while blocking your opponent to win! Input your moves by selecting the cooresponding grid space\n";
-		cout << "1 2 3\n4 5 6\n7 8 9\n";
-		break;
+		case 2:
+			cout << "\nInstructions:\n";
+			cout << "Get three of your symbol (X) in a horizontal, vertical, or diagonal row while blocking your opponent to win! Input your moves by selecting the cooresponding grid space\n";
+			cout << "1 2 3\n4 5 6\n7 8 9\n";
+			break;
 
-	case 3:
-		cout << "\nExiting program.";
-		returnToMainMenu = false;
-		break;
+		case 3:
+			cout << "\nExiting program.";
+			returnToMainMenu = false;
+			break;
 
-	case 4:
-		cout << "\nDisplaying sample board:\n";
-		printBoard(ticTacToe);
-		break;
+		case 4:
+			cout << "\nDisplaying sample board:\n";
+			printBoard(ticTacToe);
+			break;
 
 
-	failed:
-	default:
-		cout << "\nInvalid input. Returning to menu\n";
-		break;
-	}
+		failed:
+		default:
+			cout << "\nInvalid input. Returning to menu\n";
+			break;
+		}
 
 	}
 
@@ -112,7 +124,7 @@ int main()
 
 bool checkWin(int boardState[])
 {
-	if ((boardState[0] != 0 && boardState[0] == boardState[1] && boardState[1] == boardState[2]) || (boardState[3] != 0 && boardState[3] == boardState[4] && boardState[4] == boardState[5]) ||	(boardState[6] != 0 && boardState[6] == boardState[7] && boardState[7] == boardState[8]))
+	if ((boardState[0] != 0 && boardState[0] == boardState[1] && boardState[1] == boardState[2]) || (boardState[3] != 0 && boardState[3] == boardState[4] && boardState[4] == boardState[5]) || (boardState[6] != 0 && boardState[6] == boardState[7] && boardState[7] == boardState[8]))
 	{
 		//massive line above checks all three horizontals
 		return true;
@@ -131,7 +143,7 @@ bool checkWin(int boardState[])
 	{
 		return false;
 	}
-	
+
 }
 
 void playerChange(int boardState[])
@@ -140,7 +152,7 @@ void playerChange(int boardState[])
 	int choice = 777;
 	while (playerChose == false)
 	{
-		playerFailed:
+	playerFailed:
 		cout << "Player, select move (1-9)\n";
 		cin >> choice;
 		if (cin.fail())
@@ -169,7 +181,7 @@ void computerChange(int boardState[])
 {
 	bool CPUChose = false;
 	int choice = (rand() % 9 + 1);
-	
+
 	while (CPUChose == false)
 	{
 		choice--;
@@ -192,16 +204,16 @@ void printBoard(int boardState[])
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			switch(boardState[i * 3 + j])
+			switch (boardState[i * 3 + j])
 			{
 			case 0:
-				cout << "?";
+				cout << i * 3 + j + 1;
 				break;
 
 			case 1:
 				cout << "X";
 				break;
-				
+
 			case 2:
 				cout << "O";
 				break;
