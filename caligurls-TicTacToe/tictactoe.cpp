@@ -174,7 +174,7 @@ void playerChange(int boardState[])
 	playerFailed:
 		cout << "Player, select move (1-9)\n";
 		cin >> choice;
-		if (cin.fail())
+		if (cin.fail() or choice > 9 or choice < 1)
 		{
 			cin.clear();
 			cin.ignore(10000, '\n');
