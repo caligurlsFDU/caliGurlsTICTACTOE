@@ -114,7 +114,7 @@ int main()
 		case 2:
 			cout << "\nInstructions:\n";
 			cout << "Get three of your symbol (X) in a horizontal, vertical, or diagonal row while blocking your opponent to win! Input your moves by selecting the cooresponding grid space\n";
-			cout << "1 2 3\n4 5 6\n7 8 9\n";
+			printBoard(ticTacToe);
 			break;
 
 		case 3:
