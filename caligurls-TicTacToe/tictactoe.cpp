@@ -26,11 +26,23 @@ int main()
 	bool playerChose = false; //both of these are misc bools used to control loops
 	bool playerWins = false;
 	bool CPUWins = false;
+	int playerScore = 0;
+	int CPUScore = 0;
+	int tieCount = 0;
 
 	while (returnToMainMenu)
 	{
+		if (playerScore + CPUScore + tieCount > 0)
+		{
+			cout << "\n";
+			cout << "1: Play Again?\n";
+		}
+		else
+		{
 		cout << "Welcome to Tic Tac Toe. Please select an option with the cooresponding num key\n";
 		cout << "1: Play\n";
+		}
+		
 		cout << "2: Instructions\n";
 		cout << "3: Exit\n";
 		//cout << "4: Display sample board\n";
@@ -61,6 +73,7 @@ int main()
 				{
 					cout << "\n\n\nPlayer (X) wins!\n\n\n";
 					gameRunning = false;
+					playerScore++;
 					break;
 				}
 				turnCount++;
@@ -69,6 +82,7 @@ int main()
 				{
 					cout << "\n\n\nTie Game. Reached Turn 9 with a full board";
 					gameRunning = false;
+					tieCount++;
 					break;
 				}
 
@@ -81,6 +95,7 @@ int main()
 				{
 					cout << "\n\n\nCPU (O) wins!\n\n\n";
 					gameRunning = false;
+					CPUScore++;
 					break;
 				}
 				turnCount++;
@@ -93,6 +108,7 @@ int main()
 			}
 			//wipe the tic tac toe board so user can play again
 
+			cout << "Player score: " << playerScore << " CPU score: " << CPUScore << " Tie Count: " <<  "\n";
 			break;
 
 		case 2:
@@ -120,7 +136,9 @@ int main()
 
 	}
 
+	cout << "\n\n\n";
 	cout << "\nGoodbye!";
+	cout << "\n\n\n";
 }
 
 bool checkWin(int boardState[])
