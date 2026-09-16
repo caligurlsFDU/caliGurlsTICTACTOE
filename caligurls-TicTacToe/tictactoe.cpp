@@ -48,7 +48,8 @@ int main()
 		case 1:
 			turnCount = 0;
 			gameRunning = true;
-			cout << "\nPlay selected.";
+			cout << "\nPlay selected.\n";
+			printBoard(ticTacToe);
 			while (gameRunning)
 			{
 				cout << "Player (X)'s turn\n";
@@ -199,33 +200,51 @@ void computerChange(int boardState[])
 
 void printBoard(int boardState[])
 {
-	int i;
-	for (i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			switch (boardState[i * 3 + j])
-			{
-			case 0:
-				cout << i * 3 + j + 1;
-				break;
 
-			case 1:
-				cout << "X";
-				break;
+	string square1 = boardState[0] == 0 ? "1" : (boardState[0] == 1 ? "X" : "O");
+	string square2 = boardState[1] == 0 ? "2" : (boardState[1] == 1 ? "X" : "O");
+	string square3 = boardState[2] == 0 ? "3" : (boardState[2] == 1 ? "X" : "O");
+	string square4 = boardState[3] == 0 ? "4" : (boardState[3] == 1 ? "X" : "O");
+	string square5 = boardState[4] == 0 ? "5" : (boardState[4] == 1 ? "X" : "O");
+	string square6 = boardState[5] == 0 ? "6" : (boardState[5] == 1 ? "X" : "O");
+	string square7 = boardState[6] == 0 ? "7" : (boardState[6] == 1 ? "X" : "O");
+	string square8 = boardState[7] == 0 ? "8" : (boardState[7] == 1 ? "X" : "O");
+	string square9 = boardState[8] == 0 ? "9" : (boardState[8] == 1 ? "X" : "O");
 
-			case 2:
-				cout << "O";
-				break;
+	
+	cout << square1 << " | " << square2 << " | " << square3 << "\n";
+	cout << "--+---+--\n";
+	cout << square4 << " | " << square5 << " | " << square6 << "\n";
+	cout << "--+---+--\n";
+	cout << square7 << " | " << square8 << " | " << square9 << "\n";
 
-			default:
-				cout << "you shouldn't see this";
-			}
+	//int i;
+	//for (i = 0; i < 3; i++)
+	//{
+	//	for (int j = 0; j < 3; j++)
+	//	{
+	//		switch (boardState[i * 3 + j])
+	//		{
+	//		case 0:
+	//			cout << i * 3 + j + 1;
+	//			break;
 
-			cout << " ";
-		}
+	//		case 1:
+	//			cout << "X";
+	//			break;
 
-		cout << "\n";
-	}
+	//		case 2:
+	//			cout << "O";
+	//			break;
+
+	//		default:
+	//			cout << "you shouldn't see this";
+	//		}
+
+	//		cout << " ";
+	//	}
+
+	//	cout << "\n";
+	//}
 
 }
