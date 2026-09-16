@@ -165,7 +165,7 @@ void playerChange(int boardState[])
 
 		choice--;
 
-		if (boardState[choice] != 0)
+		if (boardState[choice] != 0 && boardState[choice] != 2)
 		{
 			cout << "invalid move, or space is occupied. select again.";
 		}
@@ -185,7 +185,7 @@ void computerChange(int boardState[])
 	while (CPUChose == false)
 	{
 		choice--;
-		if (boardState[choice] != 0)
+		if (boardState[choice] != 0 && boardState[choice] != 1)
 		{
 			choice = (rand() % 9 + 1);
 		}
