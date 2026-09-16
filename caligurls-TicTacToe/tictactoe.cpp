@@ -108,7 +108,7 @@ int main()
 			}
 			//wipe the tic tac toe board so user can play again
 
-			cout << "Player score: " << playerScore << " CPU score: " << CPUScore << " Tie Count: " <<  "\n";
+			cout << "Player score: " << playerScore << " Losses: " << CPUScore << " Tie Count: " <<  "\n";
 			break;
 
 		case 2:
