@@ -80,7 +80,7 @@ int main()
 
 				if (turnCount == 9)
 				{
-					cout << "\n\n\nTie Game. Reached Turn 9 with a full board";
+					cout << "\n\n\nTie Game. Reached Turn 9 with a full board\n\n\n";
 					gameRunning = false;
 					tieCount++;
 					break;
