@@ -33,7 +33,7 @@ int main()
 		cout << "1: Play\n";
 		cout << "2: Instructions\n";
 		cout << "3: Exit\n";
-		cout << "4: Display sample board\n";
+		//cout << "4: Display sample board\n";
 
 		cin >> userChoice;
 		if (cin.fail())
@@ -106,10 +106,10 @@ int main()
 			returnToMainMenu = false;
 			break;
 
-		case 4:
-			cout << "\nDisplaying sample board:\n";
-			printBoard(ticTacToe);
-			break;
+		//case 4:
+		//	cout << "\nDisplaying sample board:\n";
+		//	printBoard(ticTacToe);
+		//	break;
 
 
 		failed:
